@@ -50,9 +50,9 @@ clone_repository() {
     fi
 }
 
-# install_web() {
-#     cp -r $1/* /var/www/html
-# }
+install_web() {
+    cp -r $1/* /var/www/html
+}
 
 
 
