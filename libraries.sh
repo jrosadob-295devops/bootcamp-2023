@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# package_exist() {
-#   if dpkg -l | grep -q $1;
-#     then
-#         return 1
-#     else
-#         return 0
-#     fi
-# }
+package_exist() {
+  if dpkg -l | grep -q $1;
+    then
+        return 1
+    else
+        return 0
+    fi
+}
 
-# package_install() {
-#     apt install -y $1 $2 $3 $4 $5 $6 $7 $8 $9
-# }
+package_install() {
+    apt install -y $1 $2 $3 $4 $5 $6 $7 $8 $9
+}
 
 apache2_install() {
     echo "apache2_install ..."
