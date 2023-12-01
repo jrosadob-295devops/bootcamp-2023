@@ -1,5 +1,15 @@
 #!/bin/bash
 
+is_sudo() {
+   if [ "$(id -u)" -eq 0 ]; then
+        echo "El script se está ejecutando como root."
+    else
+        echo "Este script necesita privilegios de root para ejecutarse."
+        echo "Por favor, vuelve a ejecutar el script con sudo."
+        exit 1
+    fi 
+}
+
 package_exist() {
   if dpkg -l | grep -q $1;
     then
@@ -14,7 +24,6 @@ package_install() {
 }
 
 apache2_install() {
-    echo "apache2_install ..."
     PACKAGE="apache2"
     package_exist $PACKAGE
     if [ $? -eq 1 ];
@@ -26,20 +35,20 @@ apache2_install() {
     fi
 }
 
-# apache2_setup() {
-#     systemctl enable apache2
-#     systemctl start apache2
-# }
+apache2_setup() {
+    systemctl enable apache2
+    systemctl start apache2
+}
 
-# clone_repository() {
-#     if [ -d "$1" ];
-#     then
-#         echo "Repositorio ya existe."
-#         git pull
-#     else
-#         git clone -b devops-mariobros $2
-#     fi
-# }
+clone_repository() {
+    if [ -d "$1" ];
+    then
+        echo "Repositorio ya existe."
+        git pull
+    else
+        git clone -b devops-mariobros $2
+    fi
+}
 
 # install_web() {
 #     cp -r $1/* /var/www/html
