@@ -15,7 +15,7 @@
 
 apache2_install() {
     echo "apache2_install ..."
-    $PACKAGE="apache2"
+    PACKAGE="apache2"
     package_exist $PACKAGE
     if [ $? -eq 1 ];
     then
