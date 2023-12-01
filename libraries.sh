@@ -14,13 +14,14 @@ package_install() {
 }
 
 apache2_install() {
-    package_exist $Apache
+    $PACKAGE="apache2"
+    package_exist $PACKAGE
     if [ $? -eq 1 ]
     then
         echo "$PACKAGE ya está instalado"
     else
         echo "Instalando $PACKAGE"
-        package_install $Apache
+        package_install $PACKAGE
     fi
 }
 
@@ -36,7 +37,7 @@ clone_repository() {
         git pull
     else
         git clone -b devops-mariobros $2
-    if
+    fi
 }
 
 install_web() {
